@@ -1,4 +1,4 @@
-function addTemplate() {
+/*function addTemplate() {
     "use strict";
     //Variables for use later on in the script.
 	var tName = prompt('Title of the designated template along with parameters separated by a "|"'),
