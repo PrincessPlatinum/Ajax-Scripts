@@ -481,7 +481,7 @@ function ajaxBatchDeleteAPage(title, deleteReason) {
     });
 }
 
-var specialpages = ["Special:BrokenRedirects", "Special:DeadendPages", "Special:BrokenRedirects", "Special:LonelyPages", "Special:UnusedTemplates"];
+var specialpages = ["Special:BrokenRedirects", "Special:DoubleRedirects", "Special:DeadendPages", "Special:BrokenRedirects", "Special:LonelyPages", "Special:UnusedTemplates"];
 
 if (specialpages.indexOf(wgPageName) !== -1) {
     $('#WikiaArticle').prepend('<textarea id="output-box" rows="10" cols="100"></textarea>');
