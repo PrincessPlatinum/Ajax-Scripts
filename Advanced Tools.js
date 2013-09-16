@@ -480,3 +480,14 @@ function ajaxBatchDeleteAPage(title, deleteReason) {
         setTimeout(ajaxDeleteStart, 1000);
     });
 }
+
+var specialpages = ["Special:BrokenRedirects", "Special:DeadendPages", "Special:BrokenRedirects", "Special:LonelyPages", "Special:UnusedTemplates"];
+
+if (specialpages.indexOf(wgPageName) !== -1) {
+    $('#WikiaArticle').prepend('<textarea id="output-box" rows="10" cols="100"></textarea>');
+
+    $('ol.special').find('li').each(function() {
+        var text = $(this).find('a').first().text();
+        document.getElementById('output-box').value += text + '\n';
+    });
+}
