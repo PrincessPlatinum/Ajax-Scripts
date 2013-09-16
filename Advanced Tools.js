@@ -480,3 +480,12 @@ function ajaxBatchDeleteAPage(title, deleteReason) {
         setTimeout(ajaxDeleteStart, 1000);
     });
 }
+
+if (mw.config.get("wgNamespaceNumber") === -1) {
+    $('#WikiaArticle').prepend('<textarea id="output-box" rows="10" cols="100"></textarea>');
+
+    $('ol.special').find('li').each(function() {
+        var text = $(this).find('a').first().text();
+        document.getElementById('output-box').value += text + '\n';
+    });
+}
