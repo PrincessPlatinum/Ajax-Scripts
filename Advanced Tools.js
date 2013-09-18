@@ -180,9 +180,9 @@ function bdMod() {
 //Block User
 
 function ajaxBlock() {
-    var BlockUser = document.getElementById('').value,
-        Expiry = document.getElementById('').value,
-        Reason = document.getElementById('').value,
+    var BlockUser = document.getElementById('block-username').value,
+        Expiry = document.getElementById('block-durration').value,
+        Reason = document.getElementById('block-reason').value,
         url = wgServer + '/api.php?action=block&user=' + encodeURIComponent(BlockUser) + '&expiry=' + encodeURIComponent(Expiry) + '&reason=' + encodeURIComponent(Reason) + '&nocreate&autoblock&noemail&format=json&token=' + encodeURIComponent(EditToken);
     $.post(url, function () {
         $('#block-modal').closeModal();
