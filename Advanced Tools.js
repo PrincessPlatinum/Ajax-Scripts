@@ -181,7 +181,7 @@ function bdMod() {
 
 function ajaxBlock() {
     var BlockUser = document.getElementById('block-username').value,
-        Expiry = document.getElementById('block-durration').value,
+        Expiry = document.getElementById('block-duration').value,
         Reason = document.getElementById('block-reason').value,
         url = wgServer + '/api.php?action=block&user=' + encodeURIComponent(BlockUser) + '&expiry=' + encodeURIComponent(Expiry) + '&reason=' + encodeURIComponent(Reason) + '&nocreate&autoblock&noemail&format=json&token=' + encodeURIComponent(EditToken);
     $.post(url, function () {
