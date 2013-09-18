@@ -186,7 +186,6 @@ function ajaxBlock() {
         url = wgServer + '/api.php?action=block&user=' + encodeURIComponent(BlockUser) + '&expiry=' + encodeURIComponent(Expiry) + '&reason=' + encodeURIComponent(Reason) + '&nocreate&autoblock&noemail&format=json&token=' + encodeURIComponent(EditToken);
     $.post(url, function () {
         $('#block-modal').closeModal();
-        alert(BlockUser + ' has been blocked.');
     });
 }
 
