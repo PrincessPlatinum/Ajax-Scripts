@@ -451,8 +451,8 @@ function ajaxDeleteStart() {
         reason = document.getElementById('abd-reason').value,
         badchars = /(\#|<|>|\[|\]|\{|\}|\|)/;
     setInterval(function() {
-        var div = $('#abd-output'),
-            div.scrollTop( div.get(0).scrollHeight );
+        var div = $('#abd-output');
+             div.scrollTop( div.get(0).scrollHeight );
     }, 500);
     if (page === '') {
         $('#abd-output').append('* Done! Nothing left to do, or next line is blank.\n');
