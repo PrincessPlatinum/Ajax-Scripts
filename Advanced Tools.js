@@ -163,7 +163,7 @@ function redirectMod() {
 
 function bdMod() {
     $('#advancedtools').closeModal();
-    $.showCustomModal("Batch delete", '<form class="WikiaForm" method="" name=""><fieldset><textarea id="abd-textarea" style="height: 20em;width: 500px;"></textarea><p><label for="abd-reason">Delete reason:</label><input id="abd-reason"style="width: 20em;" type="text"></p><p><input id="abd-startbutton" type="button" value="start" onclick="ajaxDeleteStart();"></p><pre style="width: 500px; height: 60px; overflow: scroll;" id="abd-output"></pre></feildset></form>', {
+    $.showCustomModal("Batch delete", '<form class="WikiaForm" method="" name=""><fieldset><textarea id="abd-textarea" style="height: 20em;width: 500px;"></textarea><p><label for="abd-reason">Delete reason:</label><input id="abd-reason"style="width: 20em;" type="text"></p><p><input id="abd-startbutton" type="button" value="start" onclick="ajaxDeleteStart();"></p><pre style="border: solid 1px grey; width: 500px; height: 60px; overflow: scroll;" id="abd-output"></pre></feildset></form>', {
         id: "bd-modal",
         width: 650,
         buttons: [{
@@ -450,6 +450,10 @@ function ajaxDeleteStart() {
         page = deletes[0],
         reason = document.getElementById('abd-reason').value,
         badchars = /(\#|<|>|\[|\]|\{|\}|\|)/;
+    setInterval(function() {
+        var div = $('#abd-output'),
+            div.scrollTop( div.get(0).scrollHeight );
+    }, 500);
     if (page === '') {
         $('#abd-output').append('* Done! Nothing left to do, or next line is blank.\n');
         document.getElementById('abd-startbutton').removeAttribute('disabled');
