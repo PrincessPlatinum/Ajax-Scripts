@@ -1,3 +1,14 @@
+//Copyright 2013 Maria Williams (Princess Platinum)
+//All rights reserved
+//Do not copy, distribute, or alter
+//
+//Use is permitted by direct import of this page
+//To use add the following line of code to your js page
+// $.getScript('https://raw.github.com/PrincessPlatinum/Ajax-Scripts/master/Advanced%20Tools.js');
+//
+//All CSS belongs to Wikia inc.
+//Copying the source for modification is allowed only if written consent is given to that user
+
 if ( skin === 'oasis' || skin === 'wikia' ) {
     var node = document.createElement('a');
         node.textContent = "Advanced Tools";
