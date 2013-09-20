@@ -402,8 +402,8 @@ function FixRedlinks() {
 function ajaxTemplate() {
     var text = prompt('Template Name', 'Blacklist'),
         sig = '~~' + '~~',
-        addtexttalk = '<br /><br /> {{SUBST:Template:' + text + '}}' + sig,
-        addtextother = '{{Template:' + text + '}}<br />',
+        addtexttalk = '<br /><br /> {{subst:' + text + '}} ' + sig,
+        addtextother = '{{' + text + '}} <br />',
         reason = "Using The [[w:c:dev:AjaxTemplate|Ajax Template]] Script",
         namespace = mw.config.get('wgNamespaceNumber'),
         url;
