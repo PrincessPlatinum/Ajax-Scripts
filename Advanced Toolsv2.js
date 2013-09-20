@@ -7,8 +7,11 @@
         namespace = mw.config.get("wgNamespaceNumber"),
         signature = "~~" + "~~",
         mode,
-        title,
-        modal_html;
+        modal_title,
+        modal_html,
+        modal_id,
+        modal_button_name,
+        modal_function_to_call;
 
     //Un-urlencoding pagename
     pageName = pageName.replace(/_/g, ' ');
