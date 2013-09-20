@@ -39,10 +39,14 @@
         //Switch function (more compact?)
         switch(mode) {
             case "block":
-                modal("block");
+                
                 break;
             case "delete":
-                modal("delete");
+                modal_title = "Block user";
+                modal_html = "";
+                modal_id = "block-modal";
+                modal_button_name = "Block";
+                modal_function_to_call = function() { ajaxBlock() };
                 break;
             case "move":
                 modal("move");
