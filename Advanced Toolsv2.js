@@ -6,7 +6,9 @@
         pageId = mw.config.get("wgArticleId"),
         namespace = mw.config.get("wgNamespaceNumber"),
         signature = "~~" + "~~",
-        mode;
+        mode,
+        title,
+        modal_html;
 
     //Un-urlencoding pagename
     pageName = pageName.replace(/_/g, ' ');
