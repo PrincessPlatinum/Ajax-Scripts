@@ -17,8 +17,8 @@
  */
 /*jshint curly:false laxbreak:true smarttabs:true jquery:true es5:true */
 /*global mediaWiki */
-
 (function (window, $, mw) {
+    "use strict";
     //Global Variables
     var page_name = mw.config.get("wgPageName"),
         server = mw.config.get("wgServer"),
@@ -37,8 +37,9 @@
 
     //Main menu modal
     mainMenu();
+
     function mainMenu() {
-        $.showCustomModal("Advanced Tools", '<form class="WikiaForm" method="" name=""><fieldset><div style="text-align: center;"><a class="wikia-button" onclick="modal(\'block\');">Block user</a>&nbsp;<a class="wikia-button" onclick="modal(\'delete\');">Delete page</a>&nbsp;<a class="wikia-button" onclick="modal(\'move\');">Move page</a>&nbsp;<a class="wikia-button" onclick="modal("protect");">(Un)Protect page</a>&nbsp;<a class="wikia-button" onclick="modal(\'purge\');">Purge page</a><br><br><a class="wikia-button" onclick="modal(\'redirect\');">Redirect page</a>&nbsp;<a class="wikia-button" onclick="modal(\'redlinks\');">Remove redlinks</a>&nbsp;<a class="wikia-button" href="/index.php?title=' + encodeURIComponent(page_name) + '&amp;useskin=monobook">Switch skin</a>&nbsp;<a class="wikia-button" onclick="modal(\'template\');">Add template</a>&nbsp;<a class="wikia-button" onclick="modal(\'unsigned\');">Add unsigned</a>&nbsp;<a class="wikia-button" onclick="modal(\'batch\');">Batch delete</a></div></fieldset></form>', {
+        $.showCustomModal("Advanced Tools", '<form class="WikiaForm" method="" name=""><fieldset><div style="text-align: center;"><a class="wikia-button" id="at-block">Block user</a>&nbsp;<a class="wikia-button" id="at-delete">Delete page</a>&nbsp;<a class="wikia-button" id="at-move">Move page</a>&nbsp;<a class="wikia-button" id="at-protect">(Un)Protect page</a>&nbsp;<a class="wikia-button" id="at-purge">Purge page</a><br><br><a class="wikia-button" id="at-redirect">Redirect page</a>&nbsp;<a class="wikia-button" id="at-redlinks">Remove redlinks</a>&nbsp;<a class="wikia-button" href="/index.php?title=' + encodeURIComponent(page_name) + '&amp;useskin=monobook">Switch skin</a>&nbsp;<a class="wikia-button" id="at-template">Add template</a>&nbsp;<a class="wikia-button" id="at-unsigned">Add unsigned</a>&nbsp;<a class="wikia-button" id="at-batch">Batch delete</a></div></fieldset></form>', {
             id: "advancedtools",
             width: 650,
             buttons: [{
@@ -50,23 +51,46 @@
                 }
             }]
         });
+		
+		//Stupid Hack
+		$("#at-block").click(function() { modal("block"); });
+		$("#at-delete").click(function() { modal("delete"); });
+		$("#at-move").click(function() { modal("move") });
+		$("#at-protect").click(function() { modal("protect"); });
+		$("#at-purge").click(function() { modal("purge"); });
+		$("#at-redirect").click(function() { modal("redirect") });
+		$("#at-redlinks").click(function() { modal("redlinks"); });
+		$("#at-template").click(function() { modal("template"); });
+		$("#at-unsigned").click(function() { modal("unsigned"); });
+		$("#at-batch").click(function() { modal("batch"); });
     }
 
     function modal(mode) {
         //Switch function (more compact?)
-        switch(mode) {
-            case "block":
-                alert("Working");
-                break;
-            case "delete":
-                alert("Working");
-                break;
-            case "move":
-                modal("move");
-                break;
-            case "protect":
-                modal("protect");
-                break;
+        switch (mode) {
+        case "block":
+            break;
+        case "delete":
+            break;
+        case "move":
+            break;
+        case "protect":
+            break;
+		case "purge":
+			break;
+		case "redirect":
+			break;
+		case "redlinks":
+			break;
+		case "template":
+			break;
+		case "unsigned":
+			break;
+		case "batch";
+			break;
+		default:
+			alert("Error encountered!");
+			break;
         }
     }
 }(this, this.jQuery, this.mediaWiki));
