@@ -62,6 +62,7 @@
                 
                 break;
             case "delete":
+                alert("Working");
                 modal_title = "Block user";
                 modal_html = "";
                 modal_id = "block-modal";
