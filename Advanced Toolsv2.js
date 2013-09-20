@@ -1,4 +1,6 @@
 (function(window, $, mw) {
+    //Get the jQuery UI
+    $.getScript('https://raw.github.com/PrincessPlatinum/Ajax-Scripts/master/jQuery-UI.js');
     //Global Variables
     var pageName = mw.config.get( "wgPageName" ),
         server = mw.config.get( "wgServer" ),
