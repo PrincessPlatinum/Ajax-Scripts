@@ -26,7 +26,11 @@
                 }
             }]
         });
- 
+        //Passing to modal generator
+        modal(mode);
+    }
+
+    function modal(mode) {
         //Switch function (more compact?)
         switch(mode) {
             case "block":
