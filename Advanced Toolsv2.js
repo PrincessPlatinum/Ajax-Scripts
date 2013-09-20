@@ -51,18 +51,38 @@
                 }
             }]
         });
-		
-		//Stupid Hack
-		$("#at-block").click(function() { modal("block"); });
-		$("#at-delete").click(function() { modal("delete"); });
-		$("#at-move").click(function() { modal("move") });
-		$("#at-protect").click(function() { modal("protect"); });
-		$("#at-purge").click(function() { modal("purge"); });
-		$("#at-redirect").click(function() { modal("redirect") });
-		$("#at-redlinks").click(function() { modal("redlinks"); });
-		$("#at-template").click(function() { modal("template"); });
-		$("#at-unsigned").click(function() { modal("unsigned"); });
-		$("#at-batch").click(function() { modal("batch"); });
+
+        //Stupid Hack
+        $("#at-block").click(function () {
+            modal("block");
+        });
+        $("#at-delete").click(function () {
+            modal("delete");
+        });
+        $("#at-move").click(function () {
+            modal("move")
+        });
+        $("#at-protect").click(function () {
+            modal("protect");
+        });
+        $("#at-purge").click(function () {
+            modal("purge");
+        });
+        $("#at-redirect").click(function () {
+            modal("redirect")
+        });
+        $("#at-redlinks").click(function () {
+            modal("redlinks");
+        });
+        $("#at-template").click(function () {
+            modal("template");
+        });
+        $("#at-unsigned").click(function () {
+            modal("unsigned");
+        });
+        $("#at-batch").click(function () {
+            modal("batch");
+        });
     }
 
     function modal(mode) {
@@ -76,21 +96,21 @@
             break;
         case "protect":
             break;
-		case "purge":
-			break;
-		case "redirect":
-			break;
-		case "redlinks":
-			break;
-		case "template":
-			break;
-		case "unsigned":
-			break;
-		case "batch";
-			break;
-		default:
-			alert("Error encountered!");
-			break;
+        case "purge":
+            break;
+        case "redirect":
+            break;
+        case "redlinks":
+            break;
+        case "template":
+            break;
+        case "unsigned":
+            break;
+        case "batch";
+        break;
+        default:
+            alert("Error encountered!");
+            break;
         }
     }
 }(this, this.jQuery, this.mediaWiki));
