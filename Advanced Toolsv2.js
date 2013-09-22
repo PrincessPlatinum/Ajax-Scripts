@@ -107,11 +107,11 @@
             modal_function_to_call = function () { var page = document.getElementById('delete-page').value, reason = document.getElementById('delete-reason').value; ajaxDelete(page, reason); };
             break;
         case "move":
-            modal_title;
-            modal_html;
-            modal_id;
-            modal_button_name;
-            modal_function_to_call;
+            modal_title = "Move page";
+            modal_html = '<strong>Page destination:</strong><br /><input type="text" id="move-destination" placeholder="I ran out of ideas..." style="width: 500px"></input><br /><strong>Reason for moving: </strong><br /><input type="text" id="move-reason" placeholder="I like this better" style="width: 500px;"></input><br /><strong>Leave a redirect </strong><input type="checkbox" id="redirect-check" />';
+            modal_id = "move";
+            modal_button_name = "Move";
+            modal_function_to_call = function () { var destination = document.getElementById('move-destination').value, reason = document.getElementById('move-reason').value; ajaxMove(destination, reason); };
             break;
         case "protect":
             modal_title;
@@ -165,6 +165,7 @@
         });
         //Small helper thangs
         document.getElementById('delete-page').value = page_name;
+        document.getElementById('move-destination').value = page_name;
     }
 
     //List of functions
@@ -185,5 +186,23 @@
             $('#delete').closeModal();
             document.location.reload(false);
         });
+    }
+
+    /* Move page */
+    function ajaxMove(destination, reason) {
+        var url;
+        if ($('#redirect-check').prop('checked')) {
+            url = wgServer + wgScriptPath + '/api.php?action=move&from=' + encodeURIComponent(page_name) + '&to=' + encodeURIComponent(destination) + '&reason=' + encodeURIComponent(reason) + '&format=json&token=' + encodeURIComponent(token);
+            $.post(url, function () {
+                $('#move').closeModal();
+                document.location.reload(false);
+            });
+        } else {
+            url = wgServer + wgScriptPath + '/api.php?action=move&from=' + encodeURIComponent(page_name) + '&to=' + encodeURIComponent(destination) + '&reason=' + encodeURIComponent(reason) + '&format=json&noredirect&token=' + encodeURIComponent(token);
+            $.post(url, function () {
+               $('#move').closeModal();
+               document.location.reload(false);
+            });
+        }
     }
 }(this, this.jQuery, this.mediaWiki));
