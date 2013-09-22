@@ -93,14 +93,14 @@
             modal_html = '<strong>Username/IP to block:</strong><br /><input type="text" id="block-username" placeholder="Username/IP" style="width: 500px"></input><br /><strong>Duration of the block:</strong><br /><input type="text" id="block-duration" placeholder="2 Weeks" style="width: 500px"></input><br /><strong>Reason for blocking:</strong><br /><input type="text" id="block-reason" placeholder="Vandalism" style="width: 500px"></input>';
             modal_id = "block";
             modal_button_name = "Block";
-            modal_function_to_call = function() {     var user = document.getElementById('block-username').value, expiry = document.getElementById('block-duration').value, reason = document.getElementById('block-reason').value; ajaxBlock(user, expiry, reason); };
+            modal_function_to_call = function() { var user = document.getElementById('block-username').value, expiry = document.getElementById('block-duration').value, reason = document.getElementById('block-reason').value; ajaxBlock(user, expiry, reason); };
             break;
         case "delete":
-            modal_title = ;
-            modal_html = ;
-            modal_id = ;
-            modal_button_name = ;
-            modal_function_to_call = ;
+            modal_title = "Delete page";
+            modal_html = '<strong>Title of page to delete:</strong><br/><input type="text" id="delete-page" style="width: 500px;"></input><br /><strong>Reason for deleting: </strong><br /><input type="text" id="delete-reason" placeholder="Spam" style="width: 500px;"></input>';
+            modal_id = "delete";
+            modal_button_name = "Delete";
+            modal_function_to_call = function() { var page = document.getElementById('delete-page').value, reason = document.getElementById('delete-reason').value; ajaxDelete(page, reason); };
             break;
         case "move":
             modal_title = ;
@@ -158,6 +158,24 @@
                 message: modal_button_name,
                 handler: modal_function_to_call
             }]
+        });
+    }
+
+    //List of functions
+    /* Block user */
+    function ajaxBlock(user, expiry, reason) {
+        var url = wgServer + '/api.php?action=block&user=' + encodeURIComponent(user) + '&expiry=' + encodeURIComponent(expiry) + '&reason=' + encodeURIComponent(reason) + '&nocreate&autoblock&noemail&format=json&token=' + encodeURIComponent(token);
+        $.post(url, function () {
+            $('#block').closeModal();
+        });
+    }
+
+    /* Delete page */
+    function ajaxDelete(page, reason) {
+        var url = wgServer + '/api.php?action=delete&title=' + encodeURIComponent(page) + '&reason=' + encodeURIComponent(reason) + '&format=json&token=' + encodeURIComponent(token);
+        $.post(url, function () {
+           $('#delete').closeModal();
+           document.location.reload(false);
         });
     }
 }(this, this.jQuery, this.mediaWiki));
