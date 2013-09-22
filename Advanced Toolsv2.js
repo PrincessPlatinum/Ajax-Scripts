@@ -78,7 +78,7 @@
             modal("template");
         });
         $("#at-unsigned").click(function () {
-            function(){if(-1<[1,3,4,5,7,9,11,13,15,110].indexOf(Namespace)){var pageId=page_id;$.getJSON("/api.php",{action:"query",prop:"revisions",titles:page_name,rvprop:"user",format:"json",indexpageids:1},function(json){var user=json.query.pages[pageId].revisions[0].user,addText='{{Unsigned|'+user+'}}';url=server+'/api.php?action=edit&title='+encodeURIComponent(page_name)+'&appendtext='+encodeURIComponent(addText)+'&summary=Adding_unsigned_template_for_'+encodeURIComponent(user)+'&token='+encodeURIComponent(token);$.post(url,function(){alert('Unsigned template has been added!');});});}}
+            function(){if(-1<[1,3,4,5,7,9,11,13,15,110].indexOf(Namespace)){var pageId=page_id;$.getJSON("/api.php",{action:"query",prop:"revisions",titles:page_name,rvprop:"user",format:"json",indexpageids:1},function(json){var user=json.query.pages[pageId].revisions[0].user,addText='{{Unsigned|'+user+'}}';url=server+'/api.php?action=edit&title='+encodeURIComponent(page_name)+'&appendtext='+encodeURIComponent(addText)+'&summary='+encodeURIComponent("Adding unsigned template for ")+'+encodeURIComponent(user)+'&token='+encodeURIComponent(token);$.post(url,function(){alert('Unsigned template has been added!');});});}}
         });
         $("#at-batch").click(function () {
             modal("batch");
@@ -108,22 +108,20 @@
         }
         
         //Modal thing
-        $.showCustomModal("Block user", '<form class="WikiaForm" method="" name=""><fieldset><strong>Username/IP to block:</strong><br /><input type="text" id="block-username" placeholder="Username/IP" style="width: 500px"></input><br /><strong>Duration of the block:</strong><br /><input type="text" id="block-duration" placeholder="2 Weeks" style="width: 500px"></input><br /><strong>Reason for blocking:</strong><br /><input type="text" id="block-reason" placeholder="Vandalism" style="width: 500px"></input></feildset></form>', {
-            id: "block-modal",
+        $.showCustomModal(modal_title, '<form class="WikiaForm" method="" name=""><fieldset>' + modal_html + '</feildset></form>', {
+            id: modal_id,
             width: 650,
             buttons: [{
                 id: "cancel",
                 message: "Cancel",
                 handler: function () {
-                    $('#block-modal').closeModal();
+                    $('#' + modal_id).closeModal();
                 }
             }, {
                 id: "submit",
                 defaultButton: true,
-                message: "Block",
-                handler: function () {
-                    ajaxBlock();
-                }
+                message: modal_button_name,
+                handler: modal_function_to_call
             }]
         });
     }
