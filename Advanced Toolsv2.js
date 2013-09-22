@@ -89,18 +89,53 @@
         //Switch function (more compact?)
         switch (mode) {
         case "block":
+            modal_title = ;
+            modal_html = ;
+            modal_id = ;
+            modal_button_name = ;
+            modal_function_to_call = ;
             break;
         case "delete":
+            modal_title = ;
+            modal_html = ;
+            modal_id = ;
+            modal_button_name = ;
+            modal_function_to_call = ;
             break;
         case "move":
+            modal_title = ;
+            modal_html = ;
+            modal_id = ;
+            modal_button_name = ;
+            modal_function_to_call = ;
             break;
         case "protect":
+            modal_title = ;
+            modal_html = ;
+            modal_id = ;
+            modal_button_name = ;
+            modal_function_to_call = ;
             break;
         case "redirect":
+            modal_title = ;
+            modal_html = ;
+            modal_id = ;
+            modal_button_name = ;
+            modal_function_to_call = ;
             break;
         case "template":
+            modal_title = ;
+            modal_html = ;
+            modal_id = ;
+            modal_button_name = ;
+            modal_function_to_call = ;
             break;
         case "batch";
+            modal_title = ;
+            modal_html = ;
+            modal_id = ;
+            modal_button_name = ;
+            modal_function_to_call = ;
         break;
         default:
             alert("Error encountered!");
