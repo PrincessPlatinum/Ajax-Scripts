@@ -106,5 +106,25 @@
             alert("Error encountered!");
             break;
         }
+        
+        //Modal thing
+        $.showCustomModal("Block user", '<form class="WikiaForm" method="" name=""><fieldset><strong>Username/IP to block:</strong><br /><input type="text" id="block-username" placeholder="Username/IP" style="width: 500px"></input><br /><strong>Duration of the block:</strong><br /><input type="text" id="block-duration" placeholder="2 Weeks" style="width: 500px"></input><br /><strong>Reason for blocking:</strong><br /><input type="text" id="block-reason" placeholder="Vandalism" style="width: 500px"></input></feildset></form>', {
+            id: "block-modal",
+            width: 650,
+            buttons: [{
+                id: "cancel",
+                message: "Cancel",
+                handler: function () {
+                    $('#block-modal').closeModal();
+                }
+            }, {
+                id: "submit",
+                defaultButton: true,
+                message: "Block",
+                handler: function () {
+                    ajaxBlock();
+                }
+            }]
+        });
     }
 }(this, this.jQuery, this.mediaWiki));
