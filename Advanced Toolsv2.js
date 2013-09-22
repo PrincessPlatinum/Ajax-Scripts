@@ -66,19 +66,19 @@
             modal("protect");
         });
         $("#at-purge").click(function () {
-            modal("purge");
+            function(){var page=encodeURIComponent(page_name);$.get('/index.php?title='+page+'&action=purge',function(){location.reload(true);});}
         });
         $("#at-redirect").click(function () {
             modal("redirect")
         });
         $("#at-redlinks").click(function () {
-            modal("redlinks");
+            
         });
         $("#at-template").click(function () {
             modal("template");
         });
         $("#at-unsigned").click(function () {
-            modal("unsigned");
+            function(){if(-1<[1,3,4,5,7,9,11,13,15,110].indexOf(Namespace)){var pageId=page_id;$.getJSON("/api.php",{action:"query",prop:"revisions",titles:page_name,rvprop:"user",format:"json",indexpageids:1},function(json){var user=json.query.pages[pageId].revisions[0].user,addText='{{Unsigned|'+user+'}}';url=server+'/api.php?action=edit&title='+encodeURIComponent(page_name)+'&appendtext='+encodeURIComponent(addText)+'&summary=Adding_unsigned_template_for_'+encodeURIComponent(user)+'&token='+encodeURIComponent(token);$.post(url,function(){alert('Unsigned template has been added!');});});}}
         });
         $("#at-batch").click(function () {
             modal("batch");
@@ -96,15 +96,9 @@
             break;
         case "protect":
             break;
-        case "purge":
-            break;
         case "redirect":
             break;
-        case "redlinks":
-            break;
         case "template":
-            break;
-        case "unsigned":
             break;
         case "batch";
         break;
