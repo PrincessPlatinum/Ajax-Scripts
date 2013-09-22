@@ -135,11 +135,11 @@
             modal_function_to_call = function () { var name = document.getElementById('template-name').value, param = document.getElementById('template-parameters').value; ajaxTemplate(name, param); };
             break;
         case "batch":
-            modal_title;
-            modal_html;
-            modal_id;
-            modal_button_name;
-            modal_function_to_call;
+            modal_title = "Batch delete";
+            modal_html = '<textarea id="abd-textarea" style="height: 20em;width: 500px;"></textarea><p><label for="abd-reason">Delete reason:</label><input id="abd-reason"style="width: 20em;" type="text"></p><br /><pre style="border: solid 1px grey; width: 500px; height: 60px; overflow: scroll;" id="abd-output"></pre>';
+            modal_id = "batch-delete";
+            modal_button_name = "Start!";
+            modal_function_to_call = function () { ajaxDeleteStart2(); };
             break;
         default:
             alert("Error encountered!");
@@ -255,5 +255,48 @@
                 alert('Template prepended!');
             });
         }
+    }
+
+    /* Batch Delete */
+  
+    function ajaxDeleteStart2() {
+        document.getElementById('abd-startbutton').setAttribute('disabled', 'disabled');
+        var txt = document.getElementById('abd-textarea'),
+            deletes = txt.value.split('\n'),
+            page = deletes[0],
+            reason = document.getElementById('abd-reason').value,
+            badchars = /(\#|<|>|\[|\]|\{|\}|\|)/;
+        setInterval(function() {
+            var div = $('#abd-output');
+                 div.scrollTop( div.get(0).scrollHeight );
+        }, 500);
+        if (page === '') {
+            $('#abd-output').append('* Done! Nothing left to do, or next line is blank.\n');
+            document.getElementById('abd-startbutton').removeAttribute('disabled');
+        } else {
+            if (badchars.test(page)) {
+                $('#abd-output').append('! Illegal characters detected, skipping:' + page + '\n');
+                setTimeout(ajaxDeleteStart, 1000);
+            } else {
+                $('#abd-output').append('> Attempting to delete [[' + page + ']]\n');
+                ajaxBatchDeleteAPage(page, reason);
+            }
+        }
+        deletes = deletes.slice(1, deletes.length);
+        txt.value = deletes.join('\n');
+    }
+
+    function ajaxBatchDeleteAPage(title, deleteReason) {
+        var token = mw.user.tokens.get('editToken'),
+            url = wgServer + wgScriptPath + '/api.php?action=delete&title=' + window.encodeURIComponent(title) + '&reason=' + window.encodeURIComponent(deleteReason) + '&format=json&token=' + window.encodeURIComponent(token);
+
+        $.post(url, function (data) {
+            if (data.error) {
+                $('#abd-output').append('  > Error: ' + data.error.info + '\n');
+            } else {
+                $('#abd-output').append('  > Deleted\n');
+            }
+            setTimeout(ajaxDeleteStart, 1000);
+        });
     }
 }(this, this.jQuery, this.mediaWiki));
