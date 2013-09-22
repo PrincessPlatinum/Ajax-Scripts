@@ -46,9 +46,7 @@
                 id: "close-menu",
                 defaultButton: true,
                 message: "Close form",
-                handler: function () {
-                    $("#advancedtools").closeModal();
-                }
+                handler: $("#advancedtools").closeModal();
             }]
         });
 
