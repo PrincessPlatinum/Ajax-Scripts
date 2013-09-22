@@ -89,11 +89,11 @@
         //Switch function (more compact?)
         switch (mode) {
         case "block":
-            modal_title = ;
-            modal_html = ;
-            modal_id = ;
-            modal_button_name = ;
-            modal_function_to_call = ;
+            modal_title = "Block user";
+            modal_html = '<strong>Username/IP to block:</strong><br /><input type="text" id="block-username" placeholder="Username/IP" style="width: 500px"></input><br /><strong>Duration of the block:</strong><br /><input type="text" id="block-duration" placeholder="2 Weeks" style="width: 500px"></input><br /><strong>Reason for blocking:</strong><br /><input type="text" id="block-reason" placeholder="Vandalism" style="width: 500px"></input>';
+            modal_id = "block";
+            modal_button_name = "Block";
+            modal_function_to_call = function() {     var user = document.getElementById('block-username').value, expiry = document.getElementById('block-duration').value, reason = document.getElementById('block-reason').value; ajaxBlock(user, expiry, reason); };
             break;
         case "delete":
             modal_title = ;
