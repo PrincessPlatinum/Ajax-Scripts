@@ -22,6 +22,7 @@
     //Global Variables
     var page_name = mw.config.get("wgPageName"),
         server = mw.config.get("wgServer"),
+        skin = mw.config.get("skin"),
         token = mw.user.tokens.values.editToken,
         page_id = mw.config.get("wgArticleId"),
         namespace = mw.config.get("wgNamespaceNumber"),
