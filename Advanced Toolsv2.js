@@ -272,7 +272,6 @@
     /* Batch Delete */
   
     function ajaxDeleteStart2() {
-        document.getElementById('abd-startbutton').setAttribute('disabled', 'disabled');
         var txt = document.getElementById('abd-textarea'),
             deletes = txt.value.split('\n'),
             page = deletes[0],
@@ -284,11 +283,10 @@
         }, 500);
         if (page === '') {
             $('#abd-output').append('* Done! Nothing left to do, or next line is blank.\n');
-            document.getElementById('abd-startbutton').removeAttribute('disabled');
         } else {
             if (badchars.test(page)) {
                 $('#abd-output').append('! Illegal characters detected, skipping:' + page + '\n');
-                setTimeout(ajaxDeleteStart, 1000);
+                setTimeout(ajaxDeleteStart2, 1000);
             } else {
                 $('#abd-output').append('> Attempting to delete [[' + page + ']]\n');
                 ajaxBatchDeleteAPage(page, reason);
