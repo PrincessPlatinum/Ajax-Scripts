@@ -114,11 +114,11 @@
             modal_function_to_call = function () { var destination = document.getElementById('move-destination').value, reason = document.getElementById('move-reason').value; ajaxMove(destination, reason); };
             break;
         case "protect":
-            modal_title;
-            modal_html;
-            modal_id;
-            modal_button_name;
-            modal_function_to_call;
+            modal_title = "(Un)Protect page";
+            modal_html = '<strong>Check to unprotect, Un-Check to protect : </strong><input type="checkbox" id="protect-toggle"></input><br /><strong>Durration of protection:</strong><br /><input type="text" id="protect-durration" style="width: 500px;" placeholder="3 days"></input><br /><strong>Reason for (Un)Protecting: </strong><br /><input type="text" id="protect-reason" placeholder="Vandalism" style="width: 500px;"></input>';
+            modal_id = "protect";
+            modal_button_name = "(Un)Protect;
+            modal_function_to_call = function () { var durration = document.getElementById('protect-durration').value, reason = document.getElementById('protect-reason').value; ajaxProtect(durration, reason); };
             break;
         case "redirect":
             modal_title;
@@ -189,6 +189,7 @@
     }
 
     /* Move page */
+
     function ajaxMove(destination, reason) {
         var url;
         if ($('#redirect-check').prop('checked')) {
@@ -202,6 +203,23 @@
             $.post(url, function () {
                $('#move').closeModal();
                document.location.reload(false);
+            });
+        }
+    }
+
+    /* (Un)Protect page */
+
+    function ajaxProtect(durration, reason) {
+        var url;
+        if ($('#protect-toggle').prop('checked') === false) {
+            url = wgServer + '/api.php?action=protect&title=' + encodeURIComponent(page_name) + '&protections=edit=sysop%7Cmove=sysop&expiry=' + encodeURIComponent(durration) + '&reason=' + encodeURIComponent(reason) + '&token=' + encodeURIComponent(token);
+            $.post(url, function () {
+                $('#protect').closeModal();
+            });
+        } else {
+            url = wgServer + '/api.php?action=protect&title=' + encodeURIComponent(page_name) + '&protections=edit=all%7Cmove=all&token=' + encodeURIComponent(token);
+            $.post(url, function () {
+                $('#protect').closeModal();
             });
         }
     }
