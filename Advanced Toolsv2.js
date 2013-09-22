@@ -228,7 +228,7 @@
 
     function ajaxRedirect(from, to) {
         var Text = '#REDIRECT [[' + to + ']]';
-        var url = wgServer + '/api.php?action=edit&title=' + encodeURIComponent(from) + '&text:' + encodeURIComponent(Text) + '&summary=Redirecting&format=json&token=' + encodeURIComponent(token);
+        var url = wgServer + '/api.php?action=edit&title=' + encodeURIComponent(from) + '&text=' + encodeURIComponent(Text) + '&summary=Redirecting&format=json&token=' + encodeURIComponent(token);
         $.post(url, function () {
             $('#redirect').closeModal();
             document.location.reload(false);
