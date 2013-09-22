@@ -33,6 +33,20 @@
         modal_button_name,
         modal_function_to_call;
 
+    //Adds buttons
+    if ( skin === 'oasis' || skin === 'wikia' ) {
+        var node = document.createElement('a');
+            node.textContent = "Advanced Tools";
+            node.className = "wikia-button";
+            node.id = "advanced_tools";
+            node.addEventListener('click', function () {
+                mainMenu();
+            });
+        $('li.start-a-wiki').html($(node));
+    } else {
+        $('<li id="ca-at"><a onclick="mainMenu();">Advanced Tools</a></li>').appendTo( '#p-cactions > .pBody > ul' );
+    }
+
     //Un-urlencoding pagename
     page_name = page_name.replace(/_/g, ' ');
 
@@ -296,7 +310,7 @@
             } else {
                 $('#abd-output').append('  > Deleted\n');
             }
-            setTimeout(ajaxDeleteStart, 1000);
+            setTimeout(ajaxDeleteStart2, 1000);
         });
     }
 }(this, this.jQuery, this.mediaWiki));
