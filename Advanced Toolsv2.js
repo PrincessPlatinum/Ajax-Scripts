@@ -117,7 +117,7 @@
             modal_title = "(Un)Protect page";
             modal_html = '<strong>Check to unprotect, Un-Check to protect : </strong><input type="checkbox" id="protect-toggle"></input><br /><strong>Durration of protection:</strong><br /><input type="text" id="protect-durration" style="width: 500px;" placeholder="3 days"></input><br /><strong>Reason for (Un)Protecting: </strong><br /><input type="text" id="protect-reason" placeholder="Vandalism" style="width: 500px;"></input>';
             modal_id = "protect";
-            modal_button_name = "(Un)Protect;
+            modal_button_name = "(Un)Protect";
             modal_function_to_call = function () { var durration = document.getElementById('protect-durration').value, reason = document.getElementById('protect-reason').value; ajaxProtect(durration, reason); };
             break;
         case "redirect":
