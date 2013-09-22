@@ -121,11 +121,11 @@
             modal_function_to_call = function () { var durration = document.getElementById('protect-durration').value, reason = document.getElementById('protect-reason').value; ajaxProtect(durration, reason); };
             break;
         case "redirect":
-            modal_title;
-            modal_html;
-            modal_id;
-            modal_button_name;
-            modal_function_to_call;
+            modal_title = "Create redirect";
+            modal_html = '<strong>Redirect:</strong><br /><input type="text" id="redirect-from" style="width: 500px;"></input><br /><strong>To:</strong><br /><input type="text" id="redirect-location" placeholder="Walrus" style="width: 500px"></input>';
+            modal_id = "redirect";
+            modal_button_name = "Create";
+            modal_function_to_call = function () { var from= document.getElementById('redirect-from').value, to = document.getElementById('redirect-location').value; ajaxRedirect(from, to); };
             break;
         case "template":
             modal_title;
@@ -222,5 +222,16 @@
                 $('#protect').closeModal();
             });
         }
+    }
+
+    /* Redirect page */
+
+    function ajaxRedirect(from, to) {
+        var Text = '#REDIRECT [[' + to + ']]';
+        var url = wgServer + '/api.php?action=edit&title=' + encodeURIComponent(from) + '&text:' + encodeURIComponent(Text) + '&summary=Redirecting&format=json&token=' + encodeURIComponent(token);
+        $.post(url, function () {
+            $('#redirect').closeModal();
+            document.location.reload(false);
+        });
     }
 }(this, this.jQuery, this.mediaWiki));
