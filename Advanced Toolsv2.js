@@ -128,11 +128,11 @@
             modal_function_to_call = function () { var from= document.getElementById('redirect-from').value, to = document.getElementById('redirect-location').value; ajaxRedirect(from, to); };
             break;
         case "template":
-            modal_title;
-            modal_html;
-            modal_id;
-            modal_button_name;
-            modal_function_to_call;
+            modal_title = "Add template";
+            modal_html = '<strong>Template name:</strong><br /><input type="text" id="template-name" style="width: 500px;" placeholder="delete"/><br /><strong>Template parameters (seperated by pipe "|"):</strong><br /><input type="text" id="template-parameters" style="width: 500px" placeholder="Spam|~~~~" />';
+            modal_id = "template";
+            modal_button_name = "Add";
+            modal_function_to_call = function () { var name = document.getElementById('template-name').value, param = document.getElementById('template-parameters').value; ajaxTemplate(name, param); };
             break;
         case "batch":
             modal_title;
@@ -233,5 +233,27 @@
             $('#redirect').closeModal();
             document.location.reload(false);
         });
+    }
+
+    /* Template */
+  
+    function ajaxTemplate(name, param) {
+        var sig = '~~' + '~~',
+            addtexttalk = '<br /><br /> {{subst:' + text + '}} ' + sig,
+            addtextother = '{{' + name + '' + param + '}} <br />',
+            reason = "Using The Advanced Version Of [[w:c:dev:QuickTools|QuickTools]]",
+            url;
+        if (-1 < [1, 3, 5, 7, 9, 11, 13, 15].indexOf(namespace)) {
+            url = wgServer + '/api.php?action=edit&title=' + encodeURIComponent(page_name) + '&appendtext=' + encodeURIComponent(addtexttalk) + '&summary=' + encodeURIComponent(reason) + '&token=' + encodeURIComponent(token);
+            $.post(url, function () {
+                alert('Template appended!');
+            });
+        }
+        if (-1 < [0, 2, 4, 6, 8, 10, 12, 14].indexOf(namespace)) {
+            url = wgServer + '/api.php?action=edit&title=' + encodeURIComponent(page_name) + '&prependtext=' + encodeURIComponent(addtextother) + '&summary=' + encodeURIComponent(reason) + '&token=' + encodeURIComponent(token);
+            $.post(url, function () {
+                alert('Template prepended!');
+            });
+        }
     }
 }(this, this.jQuery, this.mediaWiki));
