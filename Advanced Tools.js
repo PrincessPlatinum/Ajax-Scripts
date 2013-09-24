@@ -44,7 +44,8 @@
             });
         $('li.start-a-wiki').html($(node));
     } else {
-        $('<li id="ca-at"><a onclick="function(){mainMenu();}">Advanced Tools</a></li>').appendTo( '#p-cactions > .pBody > ul' );
+        $('<li id="ca-at"><a id="at-open">Advanced Tools</a></li>').appendTo( '#p-cactions > .pBody > ul' );
+        $('#at-open').click(function () { mainMenu(); });
     }
 
     //Un-urlencoding pagename
