@@ -167,6 +167,7 @@
                 message: "Cancel",
                 handler: function () {
                     $('#' + modal_id + '').closeModal();
+                    mainMenu();
                 }
             }, {
                 id: "submit",
