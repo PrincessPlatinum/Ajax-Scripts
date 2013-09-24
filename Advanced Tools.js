@@ -256,13 +256,13 @@
             reason = "Using The Advanced Version Of [[w:c:dev:QuickTools|QuickTools]]",
             url;
         if (-1 < [1, 3, 5, 7, 9, 11, 13, 15].indexOf(namespace)) {
-            url = wgServer + '/api.php?action=edit&title=' + encodeURIComponent(page_name) + '&appendtext=' + encodeURIComponent(addtexttalk) + '&summary=' + encodeURIComponent(reason) + '&token=' + encodeURIComponent(token);
+            url = server + '/api.php?action=edit&title=' + encodeURIComponent(page_name) + '&appendtext=' + encodeURIComponent(addtexttalk) + '&summary=' + encodeURIComponent(reason) + '&token=' + encodeURIComponent(token);
             $.post(url, function () {
                 alert('Template appended!');
             });
         }
         if (-1 < [0, 2, 4, 6, 8, 10, 12, 14].indexOf(namespace)) {
-            url = wgServer + '/api.php?action=edit&title=' + encodeURIComponent(page_name) + '&prependtext=' + encodeURIComponent(addtextother) + '&summary=' + encodeURIComponent(reason) + '&token=' + encodeURIComponent(token);
+            url = server + '/api.php?action=edit&title=' + encodeURIComponent(page_name) + '&prependtext=' + encodeURIComponent(addtextother) + '&summary=' + encodeURIComponent(reason) + '&token=' + encodeURIComponent(token);
             $.post(url, function () {
                 alert('Template prepended!');
             });
