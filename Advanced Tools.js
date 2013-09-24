@@ -46,6 +46,8 @@
     } else {
         $('<li id="ca-at"><a id="at-open">Advanced Tools</a></li>').appendTo( '#p-cactions > .pBody > ul' );
         $('#at-open').click(function () { mainMenu(); });
+        mw.loader.load( $.getSassCommonURL( 'skins/oasis/css/core/modal.scss' ), 'text/css' );
+        mw.loader.load( $.getSassCommonURL( 'skins/oasis/css/core/buttons.scss' ), 'text/css' ); 
     }
 
     //Un-urlencoding pagename
