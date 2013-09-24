@@ -251,8 +251,8 @@
   
     function ajaxTemplate(name, param) {
         var sig = '~~' + '~~',
-            addtexttalk = '<br /><br /> {{subst:' + text + '}} ' + sig,
-            addtextother = '{{' + name + '' + param + '}} <br />',
+            addtexttalk = '<br /><br /> {{subst:' + name + '|' + param + '}} ' + sig,
+            addtextother = '{{' + name + '|' + param + '}} <br />',
             reason = "Using The Advanced Version Of [[w:c:dev:QuickTools|QuickTools]]",
             url;
         if (-1 < [1, 3, 5, 7, 9, 11, 13, 15].indexOf(namespace)) {
