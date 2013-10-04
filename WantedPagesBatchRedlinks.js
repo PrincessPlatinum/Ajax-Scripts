@@ -5,7 +5,7 @@ $(function () {
         $('#mw-content-text').append('&nbsp;(<a id="redlinks-fix" href="javascript:void(0)">Fix all redlinks</a>)<img src="http://images2.wikia.nocookie.net/__cb20120926174803/dev/images/8/82/Facebook_throbber.gif" id="throbber" style="display: none"></img>');
     }
 
-    $('#redlinks-fix').click(function() { findLinks(); $('#throbber').css('display', ''); setTimeout($('#throbber').css('display', 'none'), 5000); });
+    $('#redlinks-fix').click(function() { findLinks(); $('#throbber').css('display', ''); setTimeout(function() { $('#throbber').css('display', 'none'); }, 5000); });
 
     function findLinks() {
         var pages = $("#mw-whatlinkshere-list").find('a').text();
