@@ -1,7 +1,8 @@
 //Made by Prince(ss) Platinum
 
 $(function () {
-    var completed;
+    var completed,
+        pages2;
     if (mw.config.get("wgPageName").indexOf("Special:WhatLinksHere") > -1) {
         $('#mw-content-text').append('&nbsp;(<a id="redlinks-fix" href="javascript:void(0)">Fix all redlinks</a>)<img src="http://images2.wikia.nocookie.net/__cb20120926174803/dev/images/8/82/Facebook_throbber.gif" id="throbber" style="display: none"></img>');
     }
