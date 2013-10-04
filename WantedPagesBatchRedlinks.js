@@ -1,11 +1,12 @@
 //Made by Prince(ss) Platinum
 
 $(function () {
+    var completed;
     if (mw.config.get("wgPageName").indexOf("Special:WhatLinksHere") > -1) {
-        $('#mw-content-text').append('&nbsp;(<a id="redlinks-fix" href="javascript:void(0)">Fix all redlinks</a>)');
+        $('#mw-content-text').append('&nbsp;(<a id="redlinks-fix" href="javascript:void(0)">Fix all redlinks</a>)<img src="http://images2.wikia.nocookie.net/__cb20120926174803/dev/images/8/82/Facebook_throbber.gif" id="throbber" style="display: none"></img>');
     }
 
-    $('#redlinks-fix').click(function() { findLinks(); });
+    $('#redlinks-fix').click(function() { findLinks(); $('#throbber').css('display', ''); });
 
     function findLinks() {
         var pages = $("#mw-whatlinkshere-list").find('a').text();
@@ -72,6 +73,11 @@ $(function () {
                     text: text,
                     summary: 'Fixing redlinks',
                     token: mw.user.tokens.values.editToken
+                }, function() { 
+                    completed = completed + 1;
+                    if (completed === pages2.length) {
+                        $('#throbber').css('display', 'none');
+                    }
                 });
             });
         });
