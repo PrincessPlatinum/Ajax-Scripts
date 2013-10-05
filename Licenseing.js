@@ -1,17 +1,21 @@
 (function (mw, $) {
-
-    var node = document.createElement('a');
-    node.textContent = "<Ajax-Revert>";
-    node.id = "ajax-revert";
-    node.addEventListener('click', function () {
-        var username = prompt('Please enter your username to confirm this action.');
-        if (username === mw.config.get('wgUserName')) {
-            continueOperation();
-        } else {
-            alert('Confirmation failed, action aborted');
-        }
-    });
-    $('.mw-rev-head-action').html($(node));
+    if ($('#ajax-revert')) {
+        console.log('Exists');
+    } else {
+        var node = document.createElement('a');
+        node.textContent = "<Ajax-Revert>";
+        node.id = "ajax-revert";
+        node.addEventListener('click', function () {
+            var username = prompt('Please enter your username to confirm this action.');
+            if (username === mw.config.get('wgUserName')) {
+                continueOperation();
+            } else {
+                alert('Confirmation failed, action aborted');
+            }
+        });
+        $('.mw-rev-head-action').html($(node));
+    }
+    mw.util.addCSS('#ajax-revert:before{content:"(";}#ajax-revert:after{content:")";}');
 
     function continueOperation() {
         (new mw.Api()).get({
