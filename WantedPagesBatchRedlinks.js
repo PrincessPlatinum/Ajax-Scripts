@@ -71,6 +71,8 @@ $(function () {
                     title: page_name,
                     text: text,
                     summary: 'Fixing redlinks',
+                    minor: 'true',
+                    bot: 'true',
                     token: mw.user.tokens.values.editToken
                 });
             });
