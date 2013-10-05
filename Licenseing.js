@@ -1,5 +1,5 @@
 (function (mw, $) {
-    if ($('#ajax-revert')) {
+    if ($('#ajax-revert').length > 0) {
         console.log('Exists');
     } else {
         var node = document.createElement('a');
