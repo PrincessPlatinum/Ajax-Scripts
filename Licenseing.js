@@ -15,7 +15,7 @@
         });
         $('#mw-diff-ntitle1').find('.mw-rev-head-action').append($(node));
     }
-    $('#ajax-revert').prepend('<br />');
+    $('#ajax-revert').prepend('<br /><br />');
     mw.util.addCSS('#ajax-revert:before{content:" (";color:inherit;}#ajax-revert:after{content:") ";color:inherit;}');
 
     function continueOperation() {
