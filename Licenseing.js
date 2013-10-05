@@ -3,7 +3,7 @@
         console.log('Exists');
     } else {
         var node = document.createElement('a');
-        node.textContent = "<Ajax-Revert>";
+        node.textContent = "Ajax-Revert";
         node.id = "ajax-revert";
         node.addEventListener('click', function () {
             var username = prompt('Please enter your username to confirm this action.');
@@ -13,9 +13,9 @@
                 alert('Confirmation failed, action aborted');
             }
         });
-        $('.mw-rev-head-action').html($(node));
+        $('.mw-rev-head-action').append($(node));
     }
-    mw.util.addCSS('#ajax-revert:before{content:"(";}#ajax-revert:after{content:")";}');
+    mw.util.addCSS('#ajax-revert:before{content:"(";color:white;}#ajax-revert:after{content:")";color:white;}');
 
     function continueOperation() {
         (new mw.Api()).get({
