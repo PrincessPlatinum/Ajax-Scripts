@@ -66,7 +66,7 @@ $(function () {
                 }
             }
             $.getJSON('/api.php?action=query&prop=info&titles=' + encodeURIComponent(page_name) + '&intoken=edit&indexpageids=1&format=json', function (result) {
-                $.post('/api.php?action=edit&title=' + encodeURIComponent(page_name) + 'text=' + encodeURIComponent(text) + 'summary="Fixing_redlinks&minor&bot&token=' + encodeURIComponent(mw.user.tokens.values.editToken));
+                $.post('/api.php?action=edit&title=' + encodeURIComponent(page_name) + 'text=' + encodeURIComponent(text) + 'summary="Fixing_redlinks&minor=1&bot=1&token=' + encodeURIComponent(mw.user.tokens.values.editToken));
             });
         });
     }
