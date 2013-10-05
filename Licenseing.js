@@ -1,7 +1,7 @@
 (function (mw, $) {
 
     var node = document.createElement('a');
-    node.textContent = "Ajax-Revert";
+    node.textContent = "<Ajax-Revert>";
     node.id = "ajax-revert";
     node.addEventListener('click', function () {
         var username = prompt('Please enter your username to confirm this action.');
