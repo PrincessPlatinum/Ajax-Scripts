@@ -15,7 +15,7 @@
         });
         $('.mw-rev-head-action').append($(node));
     }
-    mw.util.addCSS('#ajax-revert:before{content:"(";color:white;}#ajax-revert:after{content:")";color:white;}');
+    mw.util.addCSS('#ajax-revert:before{content:" (";color:white;}#ajax-revert:after{content:") ";color:white;}');
 
     function continueOperation() {
         (new mw.Api()).get({
