@@ -1,7 +1,5 @@
 (function (mw, $) {
-    $('.mw-rev-head-action').append('&nbsp;(<a href="javascript:void(0)" id="ajax-rollback">Rollback</a>)&nbsp;');
-  
-    $('#ajax-rollback').click(function() {
+    $('.mw-rev-head-action').append('&nbsp;(<a href="javascript:void(0)">Rollback</a>)&nbsp;').attr('id', 'ajax-rollback').click(function() {
         var username = prompt('Please enter your username to confirm this action.');
         if (username === mw.config.get('wgUserName')) {
             continueOperation();
