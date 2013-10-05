@@ -1,5 +1,9 @@
 (function (mw, $) {
-    $('.mw-rev-head-action').append('&nbsp;(<a href="javascript:void(0)">Rollback</a>)&nbsp;').attr('id', 'ajax-rollback').click(function() {
+
+    var node = document.createElement('a');
+    node.textContent = "Ajax-Revert";
+    node.id = "ajax-revert";
+    node.addEventListener('click', function () {
         var username = prompt('Please enter your username to confirm this action.');
         if (username === mw.config.get('wgUserName')) {
             continueOperation();
@@ -7,6 +11,7 @@
             alert('Confirmation failed, action aborted');
         }
     });
+    $('.mw-rev-head-action').html($(node));
 
     function continueOperation() {
         (new mw.Api()).get({
