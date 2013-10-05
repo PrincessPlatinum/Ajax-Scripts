@@ -70,6 +70,7 @@ $(function () {
                     action: 'edit',
                     title: page_name,
                     text: text,
+                    minor: 'true',
                     summary: 'Fixing redlinks',
                     token: mw.user.tokens.values.editToken
                 });
