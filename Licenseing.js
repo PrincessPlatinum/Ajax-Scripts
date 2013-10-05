@@ -13,7 +13,7 @@
                 alert('Confirmation failed, action aborted');
             }
         });
-        $('.mw-rev-head-action').append($(node));
+        $('.mw-diff-ntitle2').append($(node));
     }
     mw.util.addCSS('#ajax-revert:before{content:" (";color:white;}#ajax-revert:after{content:") ";color:white;}');
 
