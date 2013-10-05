@@ -1,4 +1,4 @@
-(function (mw) {
+(function (mw, $) {
     $('.mw-rev-head-action').append('&nbsp;(<a href="javascript:void(0)" id="ajax-rollback">Rollback</a>)&nbsp;');
   
     $('#ajax-rollback').click(function() {
@@ -38,4 +38,4 @@
             });
         });
     }
-}(mediaWiki));
+}(mediaWiki, jQuery));
