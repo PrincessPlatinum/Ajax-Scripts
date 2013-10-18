@@ -137,6 +137,7 @@
             modal_id = "files";
             modal_button_name = "Useless";
             modal_function_to_call = function() { console.log("Nothing to do!"); };
+            break;
         case "protect":
             modal_title = "(Un)Protect page";
             modal_html = '<strong>Check to unprotect, Un-Check to protect : </strong><input type="checkbox" id="protect-toggle"></input><br /><strong>Durration of protection:</strong><br /><input type="text" id="protect-durration" style="width: 500px;" placeholder="3 days"></input><br /><strong>Reason for (Un)Protecting: </strong><br /><input type="text" id="protect-reason" placeholder="Vandalism" style="width: 500px;"></input>';
