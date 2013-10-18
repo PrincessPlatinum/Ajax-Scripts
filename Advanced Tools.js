@@ -83,7 +83,7 @@
             modal("files");
             setTimeout(function() {
                 mw.loader.load('http://dev.wikia.com/wiki/ListFiles/code.js?action=raw');
-            }, 1000);
+            }, 2500);
         });
         $("#at-purge").click(function () {
             $.get('/index.php?title='+encodeURIComponent(page_name)+'&action=purge',function(){location.reload(true);});
