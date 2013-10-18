@@ -50,7 +50,7 @@
         mw.loader.load( $.getSassCommonURL( 'skins/oasis/css/core/buttons.scss' ), 'text/css' ); 
     }
     $('#advanced_tools').prepend('<img src="http://images4.wikia.nocookie.net/__cb20120305173219/dev/images/5/50/Bookmark16.png" />&nbsp;');
-    mw.util.addCSS('#advanced_tools{-webkit-border-radius:20px!important;-moz-border-radius:20px!important;border-radius:20px!important}');
+    mw.util.addCSS('#advanced_tools{-webkit-border-radius:20px!important;-moz-border-radius:20px!important;border-radius:20px!important;border: 2px solid white !important;}');
 
     //Un-urlencoding pagename
     page_name = page_name.replace(/_/g, ' ');
