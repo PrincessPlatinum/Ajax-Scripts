@@ -49,7 +49,7 @@
         mw.loader.load( $.getSassCommonURL( 'skins/oasis/css/core/modal.scss' ), 'text/css' );
         mw.loader.load( $.getSassCommonURL( 'skins/oasis/css/core/buttons.scss' ), 'text/css' ); 
     }
-    $('#advanced_tools').prepend('<img src="http://images4.wikia.nocookie.net/__cb20120305173219/dev/images/5/50/Bookmark16.png" />');
+    $('#advanced_tools').prepend('<img src="http://images4.wikia.nocookie.net/__cb20120305173219/dev/images/5/50/Bookmark16.png" />&nbsp;');
 
     //Un-urlencoding pagename
     page_name = page_name.replace(/_/g, ' ');
