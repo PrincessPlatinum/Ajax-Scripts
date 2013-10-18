@@ -55,7 +55,7 @@
 
     //Main menu modal
     function mainMenu() {
-        $.showCustomModal("Advanced Tools", '<form class="WikiaForm" method="" name=""><fieldset><div style="text-align: center;"><a class="wikia-button" id="at-block">Block user</a>&nbsp;<a class="wikia-button" id="at-delete">Delete page</a>&nbsp;<a class="wikia-button" id="at-move">Move page</a>&nbsp;<a class="wikia-button" id="at-protect">(Un)Protect page</a>&nbsp;<a class="wikia-button" id="at-purge">Purge page</a><br><br><a class="wikia-button" id="at-redirect">Redirect page</a>&nbsp;<a class="wikia-button" id="at-redlinks">Remove redlinks</a>&nbsp;<a class="wikia-button" id="at-switch">Switch skin</a>&nbsp;<a class="wikia-button" id="at-template">Add template</a>&nbsp;<a class="wikia-button" id="at-unsigned">Add unsigned</a>&nbsp;<a class="wikia-button" id="at-batch">Batch delete</a></div></fieldset><br /><h6 style="float:left">©<a href="http://c.wikia.com/wiki/User:Princess_Platinum">Princess Platinum</a> 2013 | Redlinks script by <a href="http://c.wikia.com/wiki/User:Madnessfan34537">Madnessfan34537</a> | Additional help by: <a href="http://c.wikia.com/wiki/User:Callofduty4">Callofduty4</a> and <a href="http://c.wikia.com/wiki/User:TK-999">TK-999</a></h6></form>', {
+        $.showCustomModal("Advanced Tools", '<form class="WikiaForm" method="" name=""><fieldset><div style="text-align: center;"><a class="wikia-button" id="at-block">Block user</a>&nbsp;<a class="wikia-button" id="at-delete">Delete page</a>&nbsp;<a class="wikia-button" id="at-move">Move page</a>&nbsp;<a class="wikia-button" id="at-protect">(Un)Protect page</a>&nbsp;<a class="wikia-button" id="at-purge">Purge page</a>&nbsp;<a class="wikia-button" id="at-files">List Files</a><br><br><a class="wikia-button" id="at-redirect">Redirect page</a>&nbsp;<a class="wikia-button" id="at-redlinks">Remove redlinks</a>&nbsp;<a class="wikia-button" id="at-switch">Switch skin</a>&nbsp;<a class="wikia-button" id="at-template">Add template</a>&nbsp;<a class="wikia-button" id="at-unsigned">Add unsigned</a>&nbsp;<a class="wikia-button" id="at-batch">Batch delete</a></div></fieldset><br /><h6 style="float:left">©<a href="http://c.wikia.com/wiki/User:Princess_Platinum">Princess Platinum</a> 2013 | Redlinks script by <a href="http://c.wikia.com/wiki/User:Madnessfan34537">Madnessfan34537</a> | Additional help by: <a href="http://c.wikia.com/wiki/User:Callofduty4">Callofduty4</a> and <a href="http://c.wikia.com/wiki/User:TK-999">TK-999</a>|<a href="http://www.dev.wikia.com/wiki/ListFiles">ListFiles</a> is loaded automatically.</h6></form>', {
             id: "advancedtools",
             width: 650,
             buttons: [{
@@ -78,6 +78,9 @@
         });
         $("#at-protect").click(function () {
             modal("protect");
+        });
+        $("#at-files").click(function () {
+            modal("files");
         });
         $("#at-purge").click(function () {
             $.get('/index.php?title='+encodeURIComponent(page_name)+'&action=purge',function(){location.reload(true);});
@@ -128,6 +131,12 @@
             modal_button_name = "Move";
             modal_function_to_call = function () { var destination = document.getElementById('move-destination').value, reason = document.getElementById('move-reason').value; ajaxMove(destination, reason); };
             break;
+        case "files":
+            modal_title = "List Files";
+            modal_html = '<div id="ListFiles-container">This page provides a form to query the MediaWiki API for images and requires JavaScript in order to function. See [[w:c:dev:ListFiles]] for more information.</div>';
+            modal_id = "files";
+            modal_button_name = "Useless";
+            modal_function_to_call = function() { console.log("Nothing to do!"); };
         case "protect":
             modal_title = "(Un)Protect page";
             modal_html = '<strong>Check to unprotect, Un-Check to protect : </strong><input type="checkbox" id="protect-toggle"></input><br /><strong>Durration of protection:</strong><br /><input type="text" id="protect-durration" style="width: 500px;" placeholder="3 days"></input><br /><strong>Reason for (Un)Protecting: </strong><br /><input type="text" id="protect-reason" placeholder="Vandalism" style="width: 500px;"></input>';
@@ -326,4 +335,5 @@
             document.getElementById('output-box').value += text + '\n';
         });
     }
+    mw.loader.load('http://dev.wikia.com/wiki/ListFiles/code.js?action=raw');
 }(this, this.jQuery, this.mediaWiki));
